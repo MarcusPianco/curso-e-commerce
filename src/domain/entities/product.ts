@@ -8,7 +8,7 @@ export default class Product extends Entity<ProductProps>{
     }    
 
     static build(props: ProductProps, id?:number | UniqueEntityId, ): Product{
-        const entityId=id || uniqueEntityIdGenerator(Product);
+        const entityId=id || uniqueEntityIdGenerator(this);
         const product  = new this(entityId, props)
         return product;
     }
