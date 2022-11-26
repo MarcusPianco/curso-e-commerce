@@ -25,7 +25,16 @@ export default class Order extends Entity<OrderProps>{
     }
 
     public calculateTotal():number{
-        return this.value.products.reduce((total,current)=>total+current.value.price,0)
+        let total=  this.value.products.reduce((total,current)=>{
+    
+            return total+current.value.price
+        },0)
+        //TODO: Refatorar quando extrair o discount par uma entidade(cupom de desconto)
+        if(this.value.discount){
+            total-=((total*this.value.discount)/100)
+            return total;
+        }
+        return total;
     }
 
     private static validate(orderProps: OrderProps):boolean{
