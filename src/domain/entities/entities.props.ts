@@ -10,5 +10,9 @@ export type OrderProps = {
     products: Product[];
     total?: number;
     discount?: number;
+}
 
+export type BuyerProps = {
+  name: string;
+  cpf: string;
 }
