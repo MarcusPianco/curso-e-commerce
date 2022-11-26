@@ -10,6 +10,12 @@ export default class Order extends Entity<OrderProps>{
 
     static build(props: OrderProps, id?:number | UniqueEntityId, ): Order{
         const entityId=id || uniqueEntityIdGenerator(this);
+        //TODO: Refatorar quando colocar repository
+        if(!props.products){
+            props.products=[]
+        }
+        this.validate(props)
+
         const order  = new this(entityId, props)
         return order;
     }
@@ -20,6 +26,13 @@ export default class Order extends Entity<OrderProps>{
 
     public calculateTotal():number{
         return this.value.products.reduce((total,current)=>total+current.value.price,0)
+    }
+
+    private static validate(orderProps: OrderProps):boolean{
+        if(orderProps.discount && orderProps.discount<=0){
+            throw new Error("The discount should be more than 0");
+        }
+        return true;
     }
 
 }

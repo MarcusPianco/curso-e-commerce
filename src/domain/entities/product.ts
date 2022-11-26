@@ -12,5 +12,4 @@ export default class Product extends Entity<ProductProps>{
         const product  = new this(entityId, props)
         return product;
     }
-
 }
