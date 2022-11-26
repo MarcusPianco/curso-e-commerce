@@ -32,6 +32,7 @@ export default class Order extends Entity<OrderProps>{
         if(orderProps.discount && orderProps.discount<=0){
             throw new Error("The discount should be more than 0");
         }
+        
         return true;
     }
 

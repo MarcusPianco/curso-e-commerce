@@ -2,7 +2,7 @@ import Product from "./product";
 
 export type ProductProps = {
     price: number;
-    description: number;
+    description: string;
     storeAmount:number;
 }
 
